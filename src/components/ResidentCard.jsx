@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { characterStatus } from "../constans/Resident";
+import { characterStatus } from "../constans/resident";
 import Modal from "./Modal";
 
 const ResidentCard = ({ residentEndpoint }) => {
