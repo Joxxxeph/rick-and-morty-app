@@ -1,44 +1,42 @@
-
 import axios from "axios";
 import { useState } from "react";
 
-
-const Location = ({location, setLocation }) => {
-
-  const [newNameLocation, setNewNameLocation] = useState([])
-  const [nameLocation, setNameLocation] = useState("")
-
+const Location = ({ location, setLocation }) => {
+  const [newNameLocation, setNewNameLocation] = useState([]);
+  const [nameLocation, setNameLocation] = useState("");
 
   const handleInputLocation = (e) => {
-    setNameLocation(e.target.value)
-    const locationName = e.target.value
+    setNameLocation(e.target.value);
+    const locationName = e.target.value;
 
     axios
-    .get(`https://rickandmortyapi.com/api/location/?name=${locationName}`)
-    .then(({data}) => setNewNameLocation(data.results))
-    .catch((err) => console.log(err));
+      .get(`https://rickandmortyapi.com/api/location/?name=${locationName}`)
+      .then(({ data }) => setNewNameLocation(data.results))
+      .catch((err) => console.log(err));
 
     for (let i = 0; i < newNameLocation.length; i++) {
       if (newNameLocation[i].name === locationName) {
         axios
           .get(`https://rickandmortyapi.com/api/location/?name=${locationName}`)
-          .then(({data}) => setLocation(data.results[0]))
-          .catch((error) => console.log(error))
+          .then(({ data }) => setLocation(data.results[0]))
+          .catch((error) => console.log(error));
       }
-      
     }
   };
 
   return (
     <section className="grid place-items-center h-[600px]">
       <div>
-        <img src="./logo.png" alt="" className="animate-fade-in"/>
+        <img src="./logo.png" alt="" className="animate-fade-in" />
       </div>
 
       <div className="overflow-hidden">
         <img src="" alt="" />
       </div>
-      <form onSubmit={(e) => e.preventDefault()} className="rounded-lg overflow-hidden animate-fade-in">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="rounded-lg overflow-hidden animate-fade-in"
+      >
         <input
           placeholder="type a new location..."
           name="locationName"
@@ -51,21 +49,27 @@ const Location = ({location, setLocation }) => {
           onClick={() => setNameLocation("")}
           onChange={handleInputLocation}
         />
-          <div className={`${nameLocation === "" ? "hidden" : "block"} ${nameLocation.length > 6 ? "hidden" : "block"}
+        <div
+          className={`${nameLocation === "" ? "hidden" : "block"} ${
+            nameLocation.length > 6 ? "hidden" : "block"
+          }
             overflow-y-scroll
-            absolute cursor-pointer bg-gray-950/95 z-10 w-[205px] sm:w-[280px] h-[250px]`}>
-            {
-              newNameLocation?.map((location) => (
-                <option className="hover:bg-gray-700/50 py-2 px-3 transition duration-150" key={location.name} value={location.name} onClick={handleInputLocation}>
-                  {location.name}
-                </option>
-              ))
-            }
-
-          </div>
+            absolute cursor-pointer bg-gray-950/95 z-10 w-[205px] sm:w-[280px] h-[250px]`}
+        >
+          {newNameLocation?.map((location) => (
+            <option
+              className="hover:bg-gray-700/50 py-2 px-3 transition duration-150"
+              key={location.name}
+              value={location.name}
+              onClick={handleInputLocation}
+            >
+              {location.name}
+            </option>
+          ))}
+        </div>
       </form>
 
-      {/*location info*/}
+     
       <section
         className="bg-gray-800/50 min-w-[220px] min-h-[140px] rounded-xl 
         sm:min-w-[450px] sm:min-h-[200px] 

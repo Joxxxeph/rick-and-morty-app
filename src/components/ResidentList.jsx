@@ -4,42 +4,46 @@ import { paginationLogic } from "../utils/pagination";
 import Pages from "./Pages";
 
 const ResidentList = ({ residents }) => {
-const [currentPage, setcurrentPage] = useState(1);
+  const [currentPage, setcurrentPage] = useState(1);
 
-const { pages, residentsInPage } = paginationLogic(currentPage, residents);
+  const { pages, residentsInPage } = paginationLogic(currentPage, residents);
 
-useEffect(() => {
-  setcurrentPage(1)
-}, [residents])
-
+  useEffect(() => {
+    setcurrentPage(1);
+  }, [residents]);
 
   return (
     <>
-    {
-      residents.length === 0 ? (
+      {residents.length === 0 ? (
         <section className="grid place-items-center h-[350px] animate-fade-in">
-        <h3 className="animate-fade-in text-2xl text-white/80 hover:text-[#1f20d2] transition duration-200">
-        Missing residents...
-        </h3>
+          <h3 className="animate-fade-in text-2xl text-white/80 hover:text-[#1f20d2] transition duration-200">
+            Missing residents...
+          </h3>
         </section>
-        ) : (
+      ) : (
         <section className="animate-fade-in py-6">
-          <Pages pages={pages} currentPage={currentPage} setcurrentPage={setcurrentPage}/>
+          <Pages
+            pages={pages}
+            currentPage={currentPage}
+            setcurrentPage={setcurrentPage}
+          />
           <section
             className="grid grid-cols-[repeat(auto-fit,_300px)]
             justify-center gap-6 max--w-[1000px] mx-auto py-10 "
-            >
+          >
             {residentsInPage.map((resident) => (
               <ResidentCard key={resident} residentEndpoint={resident} />
             ))}
           </section>
-          {/* paginacion */}
-          <Pages pages={pages} currentPage={currentPage} setcurrentPage={setcurrentPage} />
-          </section>
-          )
-        }
-        </>
-    
+          
+          <Pages
+            pages={pages}
+            currentPage={currentPage}
+            setcurrentPage={setcurrentPage}
+          />
+        </section>
+      )}
+    </>
   );
 };
 export default ResidentList;

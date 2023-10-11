@@ -7,19 +7,16 @@ const ResidentCard = ({ residentEndpoint }) => {
   const [resident, setResident] = useState(null);
   const [modal, setModal] = useState(false);
 
-
-
-  useEffect(() => {  
-  axios
-    .get(residentEndpoint)
-    .then(({ data }) => setResident(data))
-    .catch((err) => console.log(err))       
-
-  }, [])  
+  useEffect(() => {
+    axios
+      .get(residentEndpoint)
+      .then(({ data }) => setResident(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleModal = () => {
-    setModal(!modal)
-  }
+    setModal(!modal);
+  };
 
   return (
     <div>
@@ -31,7 +28,7 @@ const ResidentCard = ({ residentEndpoint }) => {
             className="cursor-pointer hover:brightness-75
         transition duration-200"
           />
-          {/* Status */}
+         
           <div
             className="absolute bottom-4 left-1/2 -transtlate-x-1/2 bg-black/50
           text-white px-4 py-1 rounded-md flex item-center gap-2"
@@ -74,5 +71,5 @@ const ResidentCard = ({ residentEndpoint }) => {
       </div>
     </div>
   );
-}
+};
 export default ResidentCard;
