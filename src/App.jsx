@@ -30,7 +30,8 @@ function App() {
           <h3 className="text-white">Loading...</h3>
         </div>
       ) : (
-        <main className="font-['Lato'] px-4 min-h-screen bg-[url('./rick.jpg')] bg-fixed bg-cover bg-center text-white">
+        <main className="font-['Lato']  text-white">
+          <img src="./rick.jpg" alt="" className="min-h-screen min-w-full fixed object-cover bg-cover bg-center"/>
           <Location location={location} setLocation={setLocation} />
           <ResidentList residents={location?.residents ?? []} />
         </main>

@@ -15,20 +15,20 @@ const ResidentList = ({ residents }) => {
   return (
     <>
       {residents.length === 0 ? (
-        <section className="grid place-items-center h-[350px] animate-fade-in">
+        <section className="relative grid place-items-center h-[350px] animate-fade-in">
           <h3 className="animate-fade-in text-2xl text-white/80 hover:text-[#1f20d2] transition duration-200">
             Missing residents...
           </h3>
         </section>
       ) : (
-        <section className="animate-fade-in py-6">
+        <section className="z-10 animate-fade-in py-6">
           <Pages
             pages={pages}
             currentPage={currentPage}
             setcurrentPage={setcurrentPage}
           />
           <section
-            className="grid grid-cols-[repeat(auto-fit,_300px)]
+            className="z-10 grid grid-cols-[repeat(auto-fit,_300px)]
             justify-center gap-6 max--w-[1000px] mx-auto py-10 "
           >
             {residentsInPage.map((resident) => (

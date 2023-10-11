@@ -41,6 +41,7 @@ export default {
             opacity: '100%'
           }
         },
+        
       },
       animation: {
         'fade-in': 'fade-in 1s',

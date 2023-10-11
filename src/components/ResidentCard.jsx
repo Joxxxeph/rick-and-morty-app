@@ -20,7 +20,7 @@ const ResidentCard = ({ residentEndpoint }) => {
 
   return (
     <div>
-      <article className="bg-gray-800/50 rounded-xl overflow-hidden animate-fade-in">
+      <article className="relative bg-gray-800/50 rounded-xl overflow-hidden animate-fade-in">
         <header className="relative" onClick={handleModal}>
           <img
             src={resident?.image}

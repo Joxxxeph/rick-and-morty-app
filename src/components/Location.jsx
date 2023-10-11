@@ -26,8 +26,8 @@ const Location = ({ location, setLocation }) => {
 
   return (
     <section className="grid place-items-center h-[600px]">
-      <div>
-        <img src="./logo.png" alt="" className="animate-fade-in" />
+      <div className="z-10">
+        <img src="./logo.png" alt="" className="animate-fade-in active:animate-fade-in2" />
       </div>
 
       <div className="overflow-hidden">
@@ -54,7 +54,7 @@ const Location = ({ location, setLocation }) => {
             nameLocation.length > 6 ? "hidden" : "block"
           }
             overflow-y-scroll
-            absolute cursor-pointer bg-gray-950/95 z-10 w-[205px] sm:w-[280px] h-[250px]`}
+            absolute cursor-pointer bg-gray-950/95 z-20 w-[205px] sm:w-[280px] h-[250px]`}
         >
           {newNameLocation?.map((location) => (
             <option
@@ -69,31 +69,32 @@ const Location = ({ location, setLocation }) => {
         </div>
       </form>
 
-     
       <section
-        className="bg-gray-800/50 min-w-[220px] min-h-[140px] rounded-xl 
+        className="z-10 bg-gray-800/50 min-w-[220px] min-h-[140px] rounded-xl 
         sm:min-w-[450px] sm:min-h-[200px] 
         grid grid-rows-[auto_1fr] place-items-center py-2 bg-center animate-fade-in"
       >
-        <h3 className="animate-fade-in1 text-[1rem] sm:text-3xl py-2 font-bold text-green-400">
-          {location?.name}
-        </h3>
+        
+          <h3 className=" animate-fade-in1 text-[1rem] sm:text-3xl py-2 font-bold text-green-400">
+            {location?.name}
+          </h3>
 
-        <ul className="animate-fade-in1 grid grid-cols-[1fr,auto] gap-2 gap-x-4 text-[.7rem] sm:text-[1.1rem] text-white/70">
-          <li>Type:</li>
-          <li>
-            {" "}
-            <b>{location?.type}</b>{" "}
-          </li>
-          <li> Dimension: </li>
-          <li>
-            <b>{location?.dimension}</b>
-          </li>
-          <li>Population:</li>
-          <li>
-            <b>{location?.residents.length}</b>
-          </li>
-        </ul>
+          <ul className=" animate-fade-in1 grid grid-cols-[1fr,auto] gap-2 gap-x-4 text-[.7rem] sm:text-[1.1rem] text-white/70">
+            <li>Type:</li>
+            <li>
+              {" "}
+              <b>{location?.type}</b>{" "}
+            </li>
+            <li> Dimension: </li>
+            <li>
+              <b>{location?.dimension}</b>
+            </li>
+            <li>Population:</li>
+            <li>
+              <b>{location?.residents.length}</b>
+            </li>
+          </ul>
+       
       </section>
     </section>
   );
